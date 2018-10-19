@@ -1,0 +1,26 @@
+{
+  "name": "hrnyc18-mvp",
+  "version": "1.0.0",
+  "description": "You have ~24 hours to produce something compelling using the skills you've honed over the past five weeks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyatt-troia/hrnyc18-mvp.git"
+  },
+  "author": "Wyatt Troia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wyatt-troia/hrnyc18-mvp/issues"
+  },
+  "homepage": "https://github.com/wyatt-troia/hrnyc18-mvp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.4",
+    "morgan": "^1.9.1"
+  }
+}
