@@ -1,11 +1,42 @@
 const express = require('express');
-const app = express();
+const bodyparser = require('body-parser');
 const db = require('./../database/index');
+const api_helpers = require('./../api_helpers');
+const morgan = require('morgan');
 
+const app = express();
+
+app.use(morgan('dev'));
+app.use(bodyparser.json());
 
 app.get('/', (req, res) => res.send('Hello World!'));
 app.post('/estimates', (req, res) => {
-  res.send('coming!');
+  // convert start and end addresses to lat-lng via Google Maps API helper
+  console.log(req.body);
+  let { start_address, end_address } = req.body;
+  let startLatLng, endLatLng;
+  api_helpers.toLatLng(start_address)
+    .then((latLng) => {
+      startLatLng = latLng;
+      return api_helpers.toLatLng(end_address);
+    })
+    // convert lat-lngs to array of price subestimates via Uber API helper
+    .then((latLng) => {
+      endLatLng = latLng;
+      return api_helpers.fetchUberSubEstimates(startLatLng.lat, startLatLng.lng, endLatLng.lat, endLatLng.lng)
+    })
+    // create and save estimate and subestimates to Mongo DB via DB helpers
+    .then((prices) => {
+      console.log('prices retrieved from Uber:');
+      console.log(prices);
+      return db.save(prices);
+    })
+    .then((estimate) => res.send(estimate))
+    .catch((err) => console.log(err));
+
+
+  // return estimate info to client
+  
 });
 app.get('/estimates', (req, res) => {
   res.send('coming!');
