@@ -80,6 +80,7 @@ const save = (subEstimates) => {
         subEstimate.insertMany(docs)
           .then((subEstimates) => {
             // console.log(`subEstimates saved!: ${subEstimates}`)
+            subEstimates.sort((a,b) => a.highEstimate - b.highEstimate);
             subEstimates.forEach((subestimate) => savedEstimate.subEstimates.push(subestimate._id));
             savedEstimate.save()
             .then((savedEstimateWithSubEstimates) => {

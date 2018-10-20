@@ -7,12 +7,13 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    rules: [
+    loaders: [
       {        
         test : /\.jsx?/,
         include : path.join(__dirname, '/client/src/index.jsx'),
-        use : {
-          loader: 'babel-loader'
+        loader : 'babel-loader',
+        query: {
+          presets: ['react', 'es2015']
         }
       }
     ]
