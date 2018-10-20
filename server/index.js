@@ -3,13 +3,14 @@ const bodyparser = require('body-parser');
 const db = require('./../database/index');
 const api_helpers = require('./../api_helpers');
 const morgan = require('morgan');
+const path = require('path');
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(bodyparser.json());
+app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-app.get('/', (req, res) => res.send('Hello World!'));
 app.post('/estimates', (req, res) => {
   // convert start and end addresses to lat-lng via Google Maps API helper
   console.log(req.body);
@@ -31,11 +32,10 @@ app.post('/estimates', (req, res) => {
       console.log(prices);
       return db.save(prices);
     })
+    // return estimate info to client
     .then((estimate) => res.send(estimate))
     .catch((err) => console.log(err));
 
-
-  // return estimate info to client
   
 });
 app.get('/estimates', (req, res) => {
