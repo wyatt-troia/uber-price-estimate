@@ -36,7 +36,7 @@ app.post("/estimates", (req, res) => {
     .then(prices => {
       console.log("prices retrieved from Uber:");
       console.log(prices);
-      return db.save(prices);
+      // return db.save(prices);
     })
     // return estimate info to client
     .then(estimate => res.send(estimate))
