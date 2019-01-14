@@ -1,7 +1,7 @@
 {
-  "name": "hrnyc18-mvp",
+  "name": "uber-price-estimator",
   "version": "1.0.0",
-  "description": "You have ~24 hours to produce something compelling using the skills you've honed over the past five weeks.",
+  "description": "A single-page app that fetches real-time price and duration estimates of Uber rides",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
