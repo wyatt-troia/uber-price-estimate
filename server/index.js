@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyparser = require("body-parser");
-const db = require("./../database/index");
+// const db = require("./../database/index");
 const api_helpers = require("./../api_helpers");
 const morgan = require("morgan");
 const path = require("path");
