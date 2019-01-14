@@ -1,6 +1,10 @@
 # Uber Price Estimator
 
-A single-page app that fetches real-time price and duration estimates of Uber rides, built using [React](https://reactjs.org/), [React Bootstrap](https://react-bootstrap.netlify.com/), and [Express](http://expressjs.com/). Origin and destination input is converted via the [Google Maps API](https://developers.google.com/maps/documentation/) to longitude-latitude coordinates, which are then provided to the [Uber API](https://developer.uber.com/) to generate the estimates. The use of the Google Maps API enables the app to intelligently handle a variety of user input, whether containing addresses, place names, or misspellings. 
+A single-page app that fetches real-time price and duration estimates of Uber rides, built using [React](https://reactjs.org/), [React Bootstrap](https://react-bootstrap.netlify.com/), and [Express](http://expressjs.com/). 
+
+The app converts origin and destination input via the [Google Maps API](https://developers.google.com/maps/documentation/) to longitude-latitude coordinates, which are then provided to the [Uber API](https://developer.uber.com/) to generate the estimates. 
+
+The use of the Google Maps API enables the app to intelligently handle a variety of user input, whether containing addresses, place names, or misspellings. 
 
 ![Demo](https://imgur.com/cXz5W0v.gif)
 
